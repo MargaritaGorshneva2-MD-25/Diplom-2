@@ -6,22 +6,23 @@ from data import Endpoint
 
 class User:
 
-    @allure.title('Создание пользователя')
+    @allure.step('Создание пользователя')
     @staticmethod
     def create_user(data):
         return requests.post(f'{URL}{Endpoint.CREATE_USER}', data=data)
 
-    @allure.title('логирование user')
+    @allure.step('Логирование пользователя')
     @staticmethod
     def log_user(data):
         return requests.post(f'{URL}{Endpoint.LOGIN_USER}', data=data)
 
-    @allure.title('изменение данных user')
+    @allure.step('Изменение данных пользователя')
     @staticmethod
     def changing_data_user(data, token):
         return requests.patch(f'{URL}{Endpoint.DEL_AND_CHANGE_USER}', data=data, headers={'Authorization': token})
 
-    @allure.title('получение данных user')
+    @allure.step('Получение данных пользователя')
     @staticmethod
     def get_data_user(token):
         return requests.get(f'{URL}{Endpoint.DEL_AND_CHANGE_USER}', headers={'Authorization': token})
+
